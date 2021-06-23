@@ -1,3 +1,5 @@
+## IHOP Site
+
 This is a project for the House on Prospect.
 
 ### Features
@@ -16,7 +18,6 @@ This is a project for the House on Prospect.
 * Next
 * Express
 * MongoDB
-* React-router
 * React-lazyload
 * Chakra.ui
 
