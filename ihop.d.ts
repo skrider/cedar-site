@@ -1,4 +1,4 @@
-export type TextComment = {
+type TextComment = {
   content: string;
   date: string;
   authorLatitude?: string;
@@ -6,7 +6,7 @@ export type TextComment = {
   redacted: boolean;
 }
 
-export type ImageComment = {
+type ImageComment = {
   link: string;
   caption: string;
   date: string;
