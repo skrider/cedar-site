@@ -1,3 +1,14 @@
+type AppMode = "chill" | "party" | "safe"
+
+type AppState = {
+  mode: AppMode, 
+}
+
+type AppContext = {
+  appState: AppState;
+  setAppState: (state: AppState) => void;
+};
+
 type TextComment = {
   content: string;
   date: string;
