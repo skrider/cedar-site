@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 type ButtonStyle = {
-  invert: boolean;
+  invert?: boolean;
 }
 
 export default styled.button<ButtonStyle>`
