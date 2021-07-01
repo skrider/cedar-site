@@ -10,6 +10,7 @@ This is a project for the House on Prospect.
   * Automatically text updates to house moderators
 * Display comments and pictures posted by past guests
 * Implement link-based priviledges for admin functionality
+* "Party screen" with music responder, playlist, live comment feed
 
 ### Stack
 

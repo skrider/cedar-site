@@ -1,7 +1,7 @@
 import Card from "../atoms/Card";
 import styled from "styled-components";
 
-export const CommentCardContainer = styled(Card)`
+export const CommentCardContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
   grid-row-gap: ${p => p.theme.sizes.md};

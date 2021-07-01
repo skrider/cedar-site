@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
-import '../styles/globals.css'
-import { theme, GlobalStyle } from '../styles/theme'
-import { DefaultTheme, ThemeProvider } from 'styled-components'
 import { AppProps } from 'next/dist/next-server/lib/router/router';
+
+import { DefaultTheme, ThemeProvider } from 'styled-components'
+
+import { theme, GlobalStyle } from '../styles/theme'
+import '../styles/globals.css'
+
 import Store from '../src/store';
+
+import Navbar from '../src/components/Navbar';
+import {TopFiller, HeaderLayout, Layout, SubHeader, Container } from '../styles/pages/home';
+import Logo from '../src/components/Logo';
+import Background from '../src/components/Background';
+import Footer from '../src/components/Footer';
 
 const getTheme = (mode : AppMode) : DefaultTheme => {
   switch (mode) {
@@ -29,7 +38,26 @@ function MyApp({ Component, pageProps } : AppProps) {
     }}>
       <ThemeProvider theme={getTheme(appState.mode)}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Container>
+          <Background />
+          <TopFiller />
+          <Layout>
+            <HeaderLayout>
+              <div>
+                <Logo>
+                    IHOP
+                </Logo>
+                <SubHeader>
+                    Southside Berkeley
+                </SubHeader>
+              </div>
+              <img alt="hop" src="https://ssl.cdn-redfin.com/photo/10/mbphoto/522/genMid.28117522_0.jpg" />
+            </HeaderLayout>
+            <Navbar />
+            <Component {...pageProps} />
+            <Footer />
+          </Layout>
+        </Container>
       </ThemeProvider>
     </Store.Provider>
   )

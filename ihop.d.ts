@@ -10,13 +10,13 @@ type AppContext = {
 };
 
 type TextComment = {
-  _id: string;
+  _id?: string;
   content: string;
-  name: string;
+  name?: string;
   date: string;
   authorLatitude?: string;
   authorLongitude?: string;
-  redacted: boolean;
+  redacted?: boolean;
 }
 
 type ImageComment = {

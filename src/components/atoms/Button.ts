@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 type ButtonStyle = {
   invert?: boolean;
+  full?: boolean;
 }
 
 export default styled.button<ButtonStyle>`
@@ -10,9 +11,11 @@ export default styled.button<ButtonStyle>`
     p.theme.sizes.xl2 :
     `calc(${p.theme.sizes.xl2} + 2 * ${p.theme.borderWidth})`
   };
-  width: ${p => p.invert ? 
+  width: ${p => p.full? 
+    p.invert ? 
     p.theme.sizes.xl2 :
-    `calc(100% + 2 * ${p.theme.borderWidth})`
+    `calc(100% + 2 * ${p.theme.borderWidth})` :
+    'auto'
   };
   border-radius: ${p => p.theme.borderRadius};
   
@@ -53,12 +56,10 @@ export default styled.button<ButtonStyle>`
   }
 
   &:active:enabled {
-    transform: scale(1.01, 1.01);
   }
 
   &:focus:enabled {
     outline: none;
-    transform: scale(1.01, 1.01);
   }
 
   &:disabled {
