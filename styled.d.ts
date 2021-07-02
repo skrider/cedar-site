@@ -16,8 +16,12 @@ declare module 'styled-components' {
 
   export interface DefaultTheme {
     toggleDarkMode: () => void;
-    borderRadius: string;
-    borderWidth: string;
+    border: {
+      radius: string,
+      color: string,
+      width: string,
+      all: string
+    }
     colors: ColorSet;
     partyColors: ColorSet;
     fontSizes: {

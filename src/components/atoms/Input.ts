@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export default styled.input<{rejected?: boolean, accepted?: boolean}>`
   height: ${p => p.theme.sizes.xl2};
-  width: calc(100% - ${p => p.theme.sizes.md});
-  border-radius: ${p => p.theme.borderRadius};
+  width: calc(100% - 2 * ${p => p.theme.sizes.md} + 2 * ${p => p.theme.border.width});
+  border-radius: ${p => p.theme.border.radius};
 
-  border: ${p => p.theme.borderWidth} solid ${p => p.theme.colors.content};
+  border: ${p => p.theme.border.all};
   background: ${p => p.theme.colors.foreground};
   
   padding-left: ${p => p.theme.sizes.md};
@@ -19,7 +19,7 @@ export default styled.input<{rejected?: boolean, accepted?: boolean}>`
 
   &:focus {
     outline: none;
-    transform: scale(1.01, 1.01);
+    border-color: ${p => p.theme.colors.secondary};
   }
 
   &:disabled {

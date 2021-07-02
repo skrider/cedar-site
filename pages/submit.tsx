@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import { Input, InputBox, Button } from '../src/components/atoms';
-import { CommentInput, TextArea } from '../styles/pages/submit';
+import { Input, Textarea, Button } from '../src/components/atoms';
 import Home from '.';
 
 export default function Submit() {
-  const [name, setName] = useState<string>("Anonymous Bear");
+  const [name, setName] = useState<string>("");
   const [comment, setComment] = useState<string>("");
 
   return (
     <>
       <Input 
-        value={name} 
+        value={name}
+        placeholder={"Anonymous Bear"}
         onChange={(e) => setName(e.currentTarget.value)}
       />
-      <CommentInput>
-        <InputBox
-          placeholder={"Music was mid lemme get aux next time"}
-          value={comment}
-          onEdit={(e) => {
-            setComment(e.target.value)
-          }}
-        />
-      </CommentInput>
-      <TextArea />
+      <Textarea
+        placeholder={"Music was mid lemme get aux next time"}
+        value={comment}
+        onChange={(e) => {
+          setComment(e.target.value)
+        }}
+      />
       <Button>
         Submit
       </Button>

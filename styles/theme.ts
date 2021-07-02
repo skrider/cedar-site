@@ -15,8 +15,12 @@ const sizes = {
 
 const theme: DefaultTheme = {
   toggleDarkMode: () => {},
-  borderRadius: sizes.sm,
-  borderWidth: '2px',
+  border: {
+    radius: sizes.sm,
+    width: '2px',
+    color: '#E4E4E4',
+    all: `2px solid #E4E4E4`
+  },
   colors: {
     primary: '#D24949',
     primaryHighlight: '#AE3131',
@@ -76,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     max-width: 100%;
-    border-radius: ${p => p.theme.borderRadius};
+    border-radius: ${p => p.theme.border.radius};
   }
   body {
     line-height: 1;
