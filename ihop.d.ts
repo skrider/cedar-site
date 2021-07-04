@@ -1,7 +1,26 @@
 type AppMode = "chill" | "party" | "safe" | "admin"
 
+type NavbarLink = {
+  name: string,
+  type: "link",
+  route: string,
+}
+
+type NavbarEffect = {
+  name: string,
+  type: "effect",
+  effect: () => void,
+}
+
+type NavbarItem = NavbarLink | NavbarEffect;
+
+type NavbarContext = {
+  navbar: NavbarItem[],
+  setNavbar: (navbar: NavbarItem[]) => void;
+}
+
 type AppState = {
-  mode: AppMode, 
+  mode: AppMode,
 }
 
 type AppContext = {
@@ -9,22 +28,29 @@ type AppContext = {
   setAppState: (state: AppState) => void;
 };
 
+type SongData = {
+  name: string;
+  artist: string;
+  approved: boolean;
+  date: number;
+}
+
 type TextComment = {
   _id?: string;
   content: string;
   name?: string;
-  date: string;
+  date: number;
   authorLatitude?: string;
   authorLongitude?: string;
-  redacted?: boolean;
+  rejected?: boolean;
 }
 
 type ImageComment = {
   _id: string;
   link: string;
   caption: string;
-  date: string;
+  date: number;
   authorLatitude: string;
   authorLongitude: string;
-  redacted: boolean;
+  rejected: boolean;
 }

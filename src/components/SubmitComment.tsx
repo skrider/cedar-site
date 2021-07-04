@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Input, Textarea, Button } from '../src/components/atoms';
-import Home from '.';
+import { Input, Textarea, Button } from './atoms';
 
 export default function Submit() {
   const [name, setName] = useState<string>("");
   const [comment, setComment] = useState<string>("");
-
+  
   return (
     <>
       <Input 
@@ -23,7 +22,6 @@ export default function Submit() {
       <Button>
         Submit
       </Button>
-      <Home />
     </>
   )
 }

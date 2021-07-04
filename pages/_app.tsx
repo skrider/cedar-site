@@ -8,7 +8,7 @@ import '../styles/globals.css'
 
 import Store from '../src/store';
 
-import Navbar from '../src/components/Navbar';
+import {Navbar, NavbarComp} from '../src/components/Navbar';
 import {TopFiller, HeaderLayout, Layout, SubHeader, Container } from '../styles/pages/home';
 import Logo from '../src/components/Logo';
 import Background from '../src/components/Background';
@@ -28,37 +28,45 @@ const getTheme = (mode : AppMode) : DefaultTheme => {
 
 function MyApp({ Component, pageProps } : AppProps) {
   const [appState, setAppState] = useState<AppState>({
-    mode: "chill"
+    mode: "party",
   });
+  const [navbarState, setNavbarState] = useState<NavbarItem[]>([]);
   
   return (
     <Store.Provider value={{
       appState: appState,
       setAppState: setAppState,
     }}>
-      <ThemeProvider theme={getTheme(appState.mode)}>
-        <GlobalStyle />
-        <Container>
-          <Background />
-          <TopFiller />
-          <Layout>
-            <HeaderLayout>
-              <div>
-                <Logo>
+      <Navbar.Provider
+        value={{
+          navbar: navbarState,
+          setNavbar: setNavbarState
+        }}
+      >
+        <ThemeProvider theme={getTheme(appState.mode)}>
+          <GlobalStyle />
+          <Container>
+            <Background />
+            <TopFiller />
+            <Layout>
+              <HeaderLayout>
+                <div>
+                  <Logo>
                     IHOP
-                </Logo>
-                <SubHeader>
+                  </Logo>
+                  <SubHeader>
                     Southside Berkeley
-                </SubHeader>
-              </div>
-              <img alt="hop" src="https://ssl.cdn-redfin.com/photo/10/mbphoto/522/genMid.28117522_0.jpg" />
-            </HeaderLayout>
-            <Navbar />
-            <Component {...pageProps} />
-            <Footer />
-          </Layout>
-        </Container>
-      </ThemeProvider>
+                  </SubHeader>
+                </div>
+                <img alt="hop" src="https://ssl.cdn-redfin.com/photo/10/mbphoto/522/genMid.28117522_0.jpg" />
+              </HeaderLayout>
+              <NavbarComp />
+              <Component {...pageProps} />
+              <Footer />
+            </Layout>
+          </Container>
+        </ThemeProvider>
+      </Navbar.Provider>
     </Store.Provider>
   )
 }

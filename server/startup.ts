@@ -1,29 +1,6 @@
-export const fakeSongs: SongData[] = [
-  {
-    name: "UCLA",
-    imageLink: "http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg",
-  },
-  {
-    name: "UCLA",
-    imageLink: "http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg",
-  },
-  {
-    name: "UCLA",
-    imageLink: "http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg",
-  },
-  {
-    name: "UCLA",
-    imageLink: "http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg",
-  },
-  {
-    name: "UCLA",
-    imageLink: "http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg",
-  },
-  {
-    name: "UCLA",
-    imageLink: "http://www.aal-europe.eu/wp-content/uploads/2014/10/square-1.jpg",
-  },
-]
+import { setupDatabase } from "./db";
+import Comment from "./models/comments";
+import Songs from "./models/songs";
 
 const array = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium "
 
@@ -102,3 +79,15 @@ export const fakeCards: TextComment[] = [
     date: 1625346863
   },
 ]
+
+export default async function () {
+  setupDatabase();
+  fakeCards.map(card => {
+    const comment = new Comment({
+      ...card,
+      authorLatitude: 1,
+      authorLongitude: 1,
+    });
+    comment.save();
+  })
+}

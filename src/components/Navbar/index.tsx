@@ -1,39 +1,37 @@
-import React from "react";
-import {NavbarLayout} from './styles';
+import React, {createContext} from "react";
+import { NavbarLayout } from './styles';
 import {Button} from '../atoms';
-import Store from '../../store';
 
-const Navbar : React.FC = () => {
+export const Navbar = createContext<NavbarContext>({
+  navbar: [],
+  setNavbar: () => {},
+})
+
+export const NavbarComp : React.FC = () => {
   return (
     <NavbarLayout>
-      <Store.Consumer>
-        {({appState: {mode}}) => (
+      <Navbar.Consumer>
+        {({navbar}) => (
           <>
-            {mode !== 'safe' && 
+            {navbar.map(({name, type, ...item}, index) => (
               <Button
-                onClick={() => {
-                  window.history.pushState({}, "submit", "/submit")
-                  window.history.go(0);
-                }}
+                key={`navbar-${index}`}
+                onClick={type === "link" ? 
+                  () => {
+                    // @ts-ignore
+                    window.history.pushState({}, name, item.route);
+                    window.history.go(0);
+                  } :
+                  // @ts-ignore
+                  item.effect
+                }
               >
-                Comment
+                {name}
               </Button>
-            }
-            {mode === 'party' && 
-              <Button>
-                Song Rec
-              </Button>
-            }
-            {mode === 'admin' && 
-              <Button>
-                Admin
-              </Button>
-            }
+            ))}
           </>
         )}
-      </Store.Consumer>
+      </Navbar.Consumer>
     </NavbarLayout>
   )
 }
-
-export default Navbar;

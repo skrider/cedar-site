@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Card } from '../../src/components/atoms';
 
 export const Layout = styled.div`
   width: auto;
