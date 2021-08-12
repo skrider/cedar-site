@@ -81,13 +81,16 @@ export const fakeCards: TextComment[] = [
 ]
 
 export default async function () {
-  setupDatabase();
-  fakeCards.map(card => {
-    const comment = new Comment({
+  try {
+    await setupDatabase();
+    console.log("db up");
+    await Promise.all(fakeCards.map(card => new Comment({
       ...card,
       authorLatitude: 1,
       authorLongitude: 1,
-    });
-    comment.save();
-  })
+    }).save()))  
+    console.log("initial data saved");
+  } catch (err) {
+    console.log(err);
+  }
 }

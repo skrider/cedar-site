@@ -33,6 +33,7 @@ type SongData = {
   artist: string;
   approved: boolean;
   date: number;
+  imageLink: string;
 }
 
 type TextComment = {
@@ -43,6 +44,7 @@ type TextComment = {
   authorLatitude?: string;
   authorLongitude?: string;
   rejected?: boolean;
+  approved?: boolean;
 }
 
 type ImageComment = {

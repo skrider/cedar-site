@@ -16,17 +16,17 @@ function getMongodbMemoryOptions() {
 }
 
 export const setupDatabase = async () => {
+  console.log('DATABASE IS SETTING UP');
   let dbUrl = "";
-  if (process.env.NODE_ENV !== "production") {
-    const mongod = new MongoMemoryServer(getMongodbMemoryOptions());
-    await mongod.start();
-    dbUrl = await mongod.getConnectionString();
-  }
+  const mongod = new MongoMemoryServer(getMongodbMemoryOptions());
+  await mongod.start();
+  dbUrl = mongod.getUri();
   const connection = await mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
   });
+  console.log('DATABASE IS SET UP');
   return connection;
 };

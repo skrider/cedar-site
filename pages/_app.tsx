@@ -28,7 +28,7 @@ const getTheme = (mode : AppMode) : DefaultTheme => {
 
 function MyApp({ Component, pageProps } : AppProps) {
   const [appState, setAppState] = useState<AppState>({
-    mode: "party",
+    mode: "chill",
   });
   const [navbarState, setNavbarState] = useState<NavbarItem[]>([]);
   

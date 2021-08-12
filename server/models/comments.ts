@@ -31,7 +31,7 @@ const CommentSchema = new Schema({
   }
 })
 
-CommentSchema.pre("save", function(this, next) {
+CommentSchema.pre("save", function(this : TextComment, next) {
   this.approved = this.approved || false;
   this.rejected = this.rejected || false;
   this.date = this.date || 1625346863;
